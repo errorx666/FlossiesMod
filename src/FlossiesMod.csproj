@@ -32,6 +32,7 @@
 		<Assets Include="**/*.ogg" />
 		<Assets Include="**/*.png" />
 		<Assets Include="**/*.xml" />
+		<Assets Include="**/PublishedFileId.txt" />
 		<Reference Include="UnityEngine.CoreModule">
 			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.CoreModule.dll</HintPath>
 			<Private>False</Private>
