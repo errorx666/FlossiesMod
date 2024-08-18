@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<ReversiTablesNeedChairs>Reversi table needs chairs</ReversiTablesNeedChairs>
+	<ReversiTablesNeedChairsDesc>One of your reversi tables does not have any adjacent chairs.\n\nBuild adjacent chairs or stools to allow your colonists to use the reversi table. Up to two people can use a reversi table at once.</ReversiTablesNeedChairsDesc>
+</LanguageData>
