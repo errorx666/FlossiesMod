@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,7 +16,6 @@ namespace FlossiesMod {
 			} catch( Exception ex ) {
 				Log.Error( ex.ToString() );
 			}
-
 		}
 	}
 }
