@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net472</TargetFramework>
+		<SteamAppsFolder>E:/SteamLibrary/steamapps</SteamAppsFolder>
+		<SteamWorkshopFolder>$(SteamAppsFolder)/workshop/content/294100</SteamWorkshopFolder>
+		<RimworldInstallDir>$(SteamAppsFolder)/common/RimWorld</RimworldInstallDir>
+		<RimworldDataDir>$(RimworldInstallDir)/RimWorldWin64_Data</RimworldDataDir>
+		<RimworldModsDir>$(RimworldInstallDir)/Mods</RimworldModsDir>
+		<ModDir>$(RimworldModsDir)/FlossiesMod</ModDir>
+		<DistDir>../dist</DistDir>
+		<OutDir>$(DistDir)/Assemblies</OutDir>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<UseVSHostingProcess>false</UseVSHostingProcess>
+		<Prefer32Bit>false</Prefer32Bit>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<Optimize>true</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>3</WarningLevel>
+		<Prefer32Bit>false</Prefer32Bit>
+	</PropertyGroup>
+	<ItemGroup>
+		<Assets Include="**/*.dds" />
+		<Assets Include="**/*.ogg" />
+		<Assets Include="**/*.png" />
+		<Assets Include="**/*.xml" />
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.CoreModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(RimworldDataDir)/Managed/Assembly-CSharp.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>$(SteamWorkshopFolder)/2009463077/Current/Assemblies/0Harmony.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+	<Target Name="CleanDist" BeforeTargets="Compile">
+		<RemoveDir Directories="$(DistDir)" />
+		<Delete Files="../FlossiesMod.zip" />
+	</Target>
+	<Target Name="CopyDist" AfterTargets="CopyFilesToOutputDirectory">
+		<Copy SourceFiles="@(Assets)" DestinationFolder="$(DistDir)/%(RecursiveDir)" />
+	</Target>
+	<Target Name="ZipMod" AfterTargets="CopyDist">
+		<ZipDirectory SourceDirectory="$(DistDir)" DestinationFile="../FlossiesMod.zip" />
+	</Target>
+	<Target Name="InstallMod" AfterTargets="ZipMod">
+		<RemoveDir Directories="$(ModDir)" />
+		<Unzip SourceFiles="../FlossiesMod.zip" DestinationFolder="$(ModDir)" />
+	</Target>
+</Project>
