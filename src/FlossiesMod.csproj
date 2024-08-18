@@ -7,7 +7,7 @@
 		<RimworldDataDir>$(RimworldInstallDir)/RimWorldWin64_Data</RimworldDataDir>
 		<RimworldModsDir>$(RimworldInstallDir)/Mods</RimworldModsDir>
 		<ModDir>$(RimworldModsDir)/FlossiesMod</ModDir>
-		<DistDir>../dist</DistDir>
+		<DistDir>$(MSBuildProjectDirectory)/../dist</DistDir>
 		<OutDir>$(DistDir)/Assemblies</OutDir>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -29,7 +29,6 @@
 		<Prefer32Bit>false</Prefer32Bit>
 	</PropertyGroup>
 	<ItemGroup>
-		<Assets Include="**/*.dds" />
 		<Assets Include="**/*.ogg" />
 		<Assets Include="**/*.png" />
 		<Assets Include="**/*.xml" />
@@ -52,16 +51,15 @@
 	</ItemGroup>
 	<Target Name="CleanDist" BeforeTargets="Compile">
 		<RemoveDir Directories="$(DistDir)" />
-		<Delete Files="../FlossiesMod.zip" />
 	</Target>
 	<Target Name="CopyDist" AfterTargets="CopyFilesToOutputDirectory">
 		<Copy SourceFiles="@(Assets)" DestinationFolder="$(DistDir)/%(RecursiveDir)" />
 	</Target>
-	<Target Name="ZipMod" AfterTargets="CopyDist">
-		<ZipDirectory SourceDirectory="$(DistDir)" DestinationFile="../FlossiesMod.zip" />
-	</Target>
-	<Target Name="InstallMod" AfterTargets="ZipMod">
+	<Target Name="InstallMod" AfterTargets="CopyDist">
 		<RemoveDir Directories="$(ModDir)" />
-		<Unzip SourceFiles="../FlossiesMod.zip" DestinationFolder="$(ModDir)" />
+		<ItemGroup>
+			<DistFiles Include="$(DistDir)/**/*" />
+		</ItemGroup>
+		<Copy SourceFiles="@(DistFiles)" DestinationFolder="$(ModDir)/%(RecursiveDir)" />
 	</Target>
 </Project>
