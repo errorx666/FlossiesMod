@@ -42,6 +42,14 @@
 			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.ImageConversionModule.dll</HintPath>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="UnityEngine.UI.dll">
+			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.UI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule.dll">
+			<HintPath>$(RimworldDataDir)/Managed/UnityEngine.IMGUIModule.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
 		<Reference Include="Assembly-CSharp">
 			<HintPath>$(RimworldDataDir)/Managed/Assembly-CSharp.dll</HintPath>
 			<Private>False</Private>
