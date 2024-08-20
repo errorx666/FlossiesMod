@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net472</TargetFramework>
+		<LangVersion>latest</LangVersion>
 		<SteamAppsFolder>E:/SteamLibrary/steamapps</SteamAppsFolder>
 		<SteamWorkshopFolder>$(SteamAppsFolder)/workshop/content/294100</SteamWorkshopFolder>
 		<RimworldInstallDir>$(SteamAppsFolder)/common/RimWorld</RimworldInstallDir>

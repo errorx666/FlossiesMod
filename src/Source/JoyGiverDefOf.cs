@@ -5,8 +5,8 @@ namespace FlossiesMod {
 	public static class JoyGiverDefOf {
 		public static JoyGiverDef Play_Reversi;
 
-		static JoyGiverDefOf() 	{
-			DefOfHelper.EnsureInitializedInCtor(typeof(JoyGiverDefOf));
+		static JoyGiverDefOf() {
+			DefOfHelper.EnsureInitializedInCtor( typeof(JoyGiverDefOf) );
 		}
 	}
 }

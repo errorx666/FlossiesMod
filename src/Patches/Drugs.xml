@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="GoJuice"]/comps</xpath>
+		<value>
+			<li>
+				<compClass>FlossiesMod.CompIngestRectal</compClass>
+			</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="Yayo"]/comps</xpath>
+		<value>
+			<li>
+				<compClass>FlossiesMod.CompIngestRectal</compClass>
+			</li>
+		</value>
+	</Operation>
+</Patch>
