@@ -5,21 +5,15 @@ using Verse;
 using HarmonyLib;
 
 namespace FlossiesMod {
-	[HarmonyPatch( typeof(MainMenuDrawer), "Init" )]
-	public static class Patch_MainMenuDrawer_Init {
-		public static void Postfix() {
-			try {
-				TexTitleOverlay = ContentFinder<Texture2D>.Get( "UI/HeroArt/GameTitleOverlay" );
-			} catch( Exception ex ) {
-				Log.Error( ex.ToString() );
-			}
-		}
-
-		public static Texture2D TexTitleOverlay { get; private set; }
-	}
-
+	[StaticConstructorOnStartup]
 	[HarmonyPatch( typeof(MainMenuDrawer), "MainMenuOnGUI" )]
 	public static class Patch_MainMenuDrawer_MainMenuOnGUI {
+		public static Texture2D TexTitleOverlay { get; private set; }
+
+		static Patch_MainMenuDrawer_MainMenuOnGUI() {
+			TexTitleOverlay = ContentFinder<Texture2D>.Get( "UI/HeroArt/GameTitleOverlay" );
+		}
+
 		public static void Postfix() {
 			try {
 				var paneSize = new Vector2( 450f, 750f );
@@ -46,7 +40,7 @@ namespace FlossiesMod {
 						titleOverlaySize.x,
 						titleOverlaySize.y
 					),
-					Patch_MainMenuDrawer_Init.TexTitleOverlay,
+					TexTitleOverlay,
 					ScaleMode.StretchToFill,
 					alphaBlend: true
 				);
