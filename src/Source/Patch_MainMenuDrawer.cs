@@ -17,7 +17,6 @@ namespace FlossiesMod {
 		public static void Postfix() {
 			try {
 				var paneSize = new Vector2( 450f, 750f );
-				
 				Rect rect = new Rect( UI.screenWidth / 2f - paneSize.x / 2f, UI.screenHeight / 2f - paneSize.y / 2f + 50f, paneSize.x, paneSize.y );
 				rect.x = UI.screenWidth - rect.width - 30f;
 				var rect2 = new Rect( 0f, rect.y - 30f, UI.screenWidth - 85f, 30f );

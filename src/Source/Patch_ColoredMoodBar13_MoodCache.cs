@@ -2,10 +2,12 @@ using Verse;
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System.Reflection;
+using System;
 
 namespace FlossiesMod {
-	[HarmonyPatch( typeof(GenMapUI), "GetPawnLabel" )]
-	public static class Patch_GenMapUI_GetPawnLabel {
+	[HarmonyPatch( "ColoredMoodBar13.MoodCache", "DoLabelVars" )]
+	public static class Patch_ColoredMoodBar13_MoodCache_DoLabelVars {
 		public static IEnumerable<CodeInstruction> Transpiler( IEnumerable<CodeInstruction> instructions ) {
 			var getLabelShortCap = AccessTools.PropertyGetter( typeof(Entity), "LabelShortCap" );
 			var getLabelShort = AccessTools.PropertyGetter( typeof(Entity), "LabelShort" );
@@ -16,6 +18,10 @@ namespace FlossiesMod {
 					yield return instruction;
 				}
 			}
+		}
+
+		public static Exception Cleanup( Exception _ex ) {
+			return null; // ignore errors
 		}
 	}
 }

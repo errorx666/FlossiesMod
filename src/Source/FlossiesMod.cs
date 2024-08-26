@@ -1,6 +1,9 @@
 using System.Reflection;
 using Verse;
 using HarmonyLib;
+using System.Collections;
+using System.Collections.Generic;
+using System;
 
 namespace FlossiesMod {
 	public class FlossiesMod: Mod {
