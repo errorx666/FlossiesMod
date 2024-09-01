@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/FactionDef[@Name="PlayerFactionBase"]/colorSpectrum</xpath>
+		<value>
+			<colorSpectrum>
+				<li>(1, 1, 1)</li>
+			</colorSpectrum>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/FactionDef[defName="PlayerColony"]/factionIconPath</xpath>
+		<value>
+			<factionIconPath>UI/Icons/Cindy</factionIconPath>
+		</value>
+	</Operation>
+</Patch>
